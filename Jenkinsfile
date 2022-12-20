@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                    bat 'ssh -i "C:\Users\PCGarage MadRa\Downloads\MyWebServerKey.pem" ubuntu@ec2-3-122-231-61.eu-central-1.compute.amazonaws.com sudo docker images'
+                    bat 'ssh -i "C:\\Users\\PCGarage MadRa\\Downloads\\MyWebServerKey.pem" ubuntu@ec2-3-122-231-61.eu-central-1.compute.amazonaws.com sudo docker images'
             }
         }
     }
