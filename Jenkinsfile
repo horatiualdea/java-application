@@ -14,6 +14,7 @@ pipeline {
         
         stage('Publish') {
             steps {
+                bat 'docker login --username AWS --password %ECR_TOKEN% public.ecr.aws/l9o2c9u6'
                 bat 'docker tag helloworld:1.0 public.ecr.aws/l9o2c9u6/helloworld:1.0'
                 bat 'docker push public.ecr.aws/l9o2c9u6/helloworld:1.0'
             }    
