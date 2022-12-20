@@ -27,8 +27,8 @@ pipeline {
                 bat 'docker run -t helloworld:1.0'
             }
         }
-        withCredentials([sshUserPrivateKey(credentialsId: "webserverpk", keyFileVariable: 'keyfile')]) {
-            stage('Deploy') {
+        stage('Deploy') {
+            withCredentials([sshUserPrivateKey(credentialsId: "webserverpk", keyFileVariable: 'keyfile')]) {
                 bat 'ssh -o StrictHostKeyChecking=no -i ${webserverpk} ubuntu@ec2-3-122-231-61.eu-central-1.compute.amazonaws.com sudo docker images'
             }
         }
