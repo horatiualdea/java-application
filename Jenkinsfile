@@ -31,7 +31,7 @@ pipeline {
             steps {    
                 withCredentials([sshUserPrivateKey(credentialsId: "webserverpk", keyFileVariable: 'keyfile')]) {
                     sh 'chmod 400 ${keyfile}'
-                    bat 'ssh -o StrictHostKeyChecking=no -i %keyfile% ubuntu@ec2-3-122-231-61.eu-central-1.compute.amazonaws.com sudo docker images'
+                    sh 'ssh -o StrictHostKeyChecking=no -i ${keyfile} ubuntu@ec2-3-122-231-61.eu-central-1.compute.amazonaws.com sudo docker images'
             
                 }
             }
