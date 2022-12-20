@@ -29,7 +29,7 @@ pipeline {
         }
         withCredentials([sshUserPrivateKey(credentialsId: "webserverpk", keyFileVariable: 'keyfile')]) {
             stage('Deploy') {
-                bat 'ssh -i ${webserverpk} ubuntu@ec2-3-122-231-61.eu-central-1.compute.amazonaws.com sudo docker images'
+                bat 'ssh -o StrictHostKeyChecking=no -i ${webserverpk} ubuntu@ec2-3-122-231-61.eu-central-1.compute.amazonaws.com sudo docker images'
             }
         }
     }
