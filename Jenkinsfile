@@ -28,8 +28,11 @@ pipeline {
             }
         }
         stage('Deploy') {
-            withCredentials([sshUserPrivateKey(credentialsId: "webserverpk", keyFileVariable: 'keyfile')]) {
-                bat 'ssh -o StrictHostKeyChecking=no -i ${webserverpk} ubuntu@ec2-3-122-231-61.eu-central-1.compute.amazonaws.com sudo docker images'
+            steps {    
+                withCredentials([sshUserPrivateKey(credentialsId: "webserverpk", keyFileVariable: 'keyfile')]) {
+                    bat 'ssh -o StrictHostKeyChecking=no -i ${webserverpk} ubuntu@ec2-3-122-231-61.eu-central-1.compute.amazonaws.com sudo docker images'
+            
+                }
             }
         }
     }
