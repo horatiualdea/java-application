@@ -29,9 +29,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sshagent(credentials: ['webserverpk']) {
-                    bat 'ssh ubuntu@3.122.231.61 -o StrictHostKeyChecking=no docker run --name helloworld public.ecr.aws/l9o2c9u6/helloworld:1.0'
-                }
+                    bat 'ssh -i "C:\Users\PCGarage MadRa\Downloads\MyWebServerKey.pem" ubuntu@ec2-3-122-231-61.eu-central-1.compute.amazonaws.com sudo docker run --name helloworld public.ecr.aws/l9o2c9u6/helloworld:1.0'
             }
         }
     }
