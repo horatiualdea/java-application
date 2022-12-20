@@ -3,6 +3,10 @@ remote.name = "WebServer"
 remote.host = "3.122.231.61"
 remote.allowAnyHosts = true
 
+withCredentials([sshUserPrivateKey(credentialsId: 'webserverpk', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
+    remote.user = userName
+    remote.identityFile = identity
+}
 
 pipeline {
     
@@ -34,12 +38,9 @@ pipeline {
             }
         }
       
-        withCredentials([sshUserPrivateKey(credentialsId: 'webserverpk', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
-             remote.user = userName
-             remote.identityFile = identity
-             stage('Deploy') {
-                 sshCommand remote: remote, command: 'docker run --name helloworld public.ecr.aws/l9o2c9u6/helloworld:1.0'   
-             }
+
+        stage('Deploy') {
+            sshCommand remote: remote, command: 'docker run --name helloworld public.ecr.aws/l9o2c9u6/helloworld:1.0'   
         }
     }
 }
