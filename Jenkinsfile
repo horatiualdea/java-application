@@ -30,7 +30,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 sshagent(credentials: ['webserverpk']) {
-                bat 'ssh ubuntu@3.122.231.61 -o StrictHostKeyChecking=no docker run --name helloworld public.ecr.aws/l9o2c9u6/helloworld:1.0'
+                    bat 'ssh ubuntu@3.122.231.61 -o StrictHostKeyChecking=no docker run --name helloworld public.ecr.aws/l9o2c9u6/helloworld:1.0'
+                }
             }
         }
     }
