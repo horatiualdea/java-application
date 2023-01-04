@@ -44,7 +44,7 @@ pipeline {
 //                      https://stackoverflow.com/questions/73135640/jschexception-auth-fail-on-ubuntu-22-04
 //                      Solution is to allow sha-rsa by adding PubkeyAcceptedAlgorithms=+ssh-rsa into /etc/ssh/sshd_config on the server.
 //                      Or use a previous version of Ubuntu that accepts sha-rsa.
-                        sshCommand remote: remote, command: 'docker login --username AWS --password %ECR_TOKEN% public.ecr.aws/l9o2c9u6 && sudo docker run -t public.ecr.aws/l9o2c9u6/helloworld:1.0'
+                        sshCommand remote: remote, command: 'sudo docker run -t public.ecr.aws/l9o2c9u6/helloworld:1.0'
                     }
                 }
             }
