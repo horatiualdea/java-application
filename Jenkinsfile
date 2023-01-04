@@ -26,7 +26,9 @@ pipeline {
                 bat 'docker images'
                 bat 'docker run -t helloworld:1.0'
             }
-        }stage("Deploy") {
+        }
+        
+        stage("Deploy") {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'webserverpk', keyFileVariable: 'identity', usernameVariable: 'userName')]) {
                     script {
@@ -56,7 +58,7 @@ pipeline {
 //                }
 //            }
 //        }
-    }
+    
 }
 
 
